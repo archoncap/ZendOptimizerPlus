@@ -30,7 +30,7 @@ while (filemtime($file1) != filemtime($file2)) {
 
 include "php_cli_server.inc";
 //php_cli_server_start('-d opcache.enable=1 -d opcache.enable_cli=1 -d opcache.revalidate_path=1');
-php_cli_server_start('-d opcache.enable=1 -d opcache.enable_cli=1 -d opcache.revalidate_path=1 -d opcache.file_update_protection=0 -d realpath_cache_size=0');
+php_cli_server_start('-n -d zend_extension=opcache.so -d opcache.enable=1 -d opcache.enable_cli=1 -d opcache.revalidate_path=1 -d opcache.file_update_protection=0 -d realpath_cache_size=0');
 echo file_get_contents('http://' . PHP_CLI_SERVER_ADDRESS . '/main.php');
 echo file_get_contents('http://' . PHP_CLI_SERVER_ADDRESS . '/main.php');
 @unlink($link);
